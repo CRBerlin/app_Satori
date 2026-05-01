@@ -1,0 +1,11 @@
+.env
+node_modules/
+Usuarios.png
+dist/
+build/
+.angular/
+.vscode/
+coverage
+*.log
+.DS_Store
+*.iml

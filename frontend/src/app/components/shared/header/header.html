@@ -1,0 +1,13 @@
+<div class="w-100 d-flex">
+    <h5 class="m-0">Panel Administrativo</h5>
+
+    <div class="d-flex align-items-center gap-2 ms-5">
+        @if (user.name) {
+        <span>Hola, {{ user.name }}</span>
+        }
+
+        <button class="btn btn-danger btn-sm" (click)="logout()">
+            Logout
+        </button>
+    </div>
+</div>

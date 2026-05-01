@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  height: 100%;
+  background-color: #003366;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.nav-link.active {
+  background-color: #dc3545;
+  border-radius: 8px;
+}

@@ -1,0 +1,51 @@
+<div class="d-flex flex-column h-100 py-3">
+
+    <!-- Logo + perfil -->
+    <div class="text-center mb-4">
+        <img src="assets/Logo_SATORI.png" alt="Satori" class="mb-2" style="width: 100%;">
+        <img src="assets/Avatar.png" alt="Admin" class="rounded-circle my-2"
+            style="width: 200px; height: 200px; object-fit: cover;">
+    </div>
+
+    <!-- Nav links -->
+    <ul class="nav nav-pills flex-column px-2 flex-grow-1">
+        <li class="nav-item">
+            <a routerLink="/usuarios" routerLinkActive="active"
+                class="nav-link text-white d-flex align-items-center gap-2">
+                <i class="bi bi-people-fill"></i> Usuarios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/planes" routerLinkActive="active"
+                class="nav-link text-white d-flex align-items-center gap-2">
+                <i class="bi bi-clipboard-check-fill"></i> Planes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/ejercicios" routerLinkActive="active"
+                class="nav-link text-white d-flex align-items-center gap-2">
+                <i class="bi bi-person-arms-up"></i> Ejercicios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/empleados" routerLinkActive="active"
+                class="nav-link text-white d-flex align-items-center gap-2">
+                <i class="bi bi-person-workspace"></i> Empleados
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/departamentos" routerLinkActive="active"
+                class="nav-link text-white d-flex align-items-center gap-2">
+                <i class="bi bi-diagram-3"></i> Departamentos
+            </a>
+        </li>
+    </ul>
+
+    <!-- Salir -->
+    <div class="px-2 mt-3">
+        <button class="nav-link text-white d-flex align-items-center gap-2 w-100" (click)="logout()">
+            <i class="bi bi-power"></i> Salir
+        </button>
+    </div>
+
+</div>

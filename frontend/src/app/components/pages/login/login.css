@@ -1,0 +1,31 @@
+.loginBody {
+  height: 100%;
+}
+h2 {
+  color: #dc3545;
+  font-size: 4rem;
+}
+
+p {
+  color: #003366;
+  font-size: 0.8rem;
+}
+
+.loginCard {
+  width: 380px;
+  border-radius: 12px;
+  margin-top: 5rem;
+}
+
+.card {
+  border: none;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+}
+
+button {
+  background-color: #dc3545;
+  color: white;
+}

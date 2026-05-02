@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DepartmentsService {
   private readonly http = inject(HttpClient);
-  // private readonly apiUrl = 'http://localhost:3000/departments';
-  private readonly apiUrl = 'http://18.219.13.137:3000/departments';
+  private readonly apiUrl = 'http://localhost:3000/departments';
+  // private readonly apiUrl = 'http://18.219.13.137:3000/departments';
 
   getAllDepartments() {
     return this.http.get(this.apiUrl);

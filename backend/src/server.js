@@ -32,20 +32,24 @@ app.use("/users", usersRouter);
 app.use("/departments", departmentsRouter);
 app.use("/employees", employeeRouter);
 
-
-//test route
-// app.get("/", (req, res) => {
-//   res.status(200).send("API is running");
-// });
+// Cambia a true si estás trabajando en local y quieres servir el frontend desde el mismo servidor
+const proyectoLocal = false; 
 
 // vamos a hacer la petición para que se muestre nuestro front
 // Servir archivos estáticos desde la carpeta "public"
-app.use(express.static(path.join(__dirname, "public")));
+if (proyectoLocal) {
+  app.use(express.static(path.join(__dirname, "public")));
 
-// Ruta principal para servir index.html
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+  // Ruta principal para servir index.html
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+  });
+} else {
+  //test route
+  app.get("/", (req, res) => {
+    res.status(200).send("API is running");
+  });
+};
 
 
 // Connect to the database and start the server

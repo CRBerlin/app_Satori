@@ -21,10 +21,10 @@ const userController = {
             });
 
             await newUser.save();
-            res.status(201).json({ message: 'User created successfully' });
+            res.status(201).json({ message: 'Usuario creado exitosamente' });
         } catch (error) {
             console.error('Error creating user:', error);
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: 'Error del servidor' });
         }
     },
     readAll: async (req, res) => {
@@ -39,7 +39,7 @@ const userController = {
             res.status(200).json({ data: users });
         } catch (error) {
             console.error('Error reading users:', error);
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: 'Error del servidor' });
         }
     },
     read: async (req, res) => {
@@ -57,7 +57,7 @@ const userController = {
             }
         } catch (error) {
             console.error('Error reading user:', error);
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: 'Error del servidor' });
         }
     },
     update: async (req, res) => {
@@ -103,7 +103,7 @@ const userController = {
 
     } catch (error) {
         console.error('Error updating user:', error);
-        res.status(500).json({ message: 'Server error' });
+        res.status(500).json({ message: 'Error del servidor' });
     }
 },
     delete: async (req, res) => {
@@ -117,7 +117,7 @@ const userController = {
             }
         } catch (error) {
             console.error('Error deleting user:', error);
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: 'Error del servidor' });
         }
     },
 };

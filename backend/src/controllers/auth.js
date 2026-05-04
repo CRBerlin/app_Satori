@@ -9,13 +9,13 @@ const authController = {
             // Buscar el usuario por email
             const user = await Users.findOne({ email }).select('+password');
             if (!user) {
-                return res.status(400).json({ message: 'Invalid email or password' });
+                return res.status(400).json({ message: 'Usuario o contraseña incorrectos' });
             }
 
             // Verificar la contraseña
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) {
-                return res.status(400).json({ message: 'Invalid email or password' });
+                return res.status(400).json({ message: 'Usuario o contraseña incorrectos' });
             }
 
             // Generar el token
@@ -29,7 +29,7 @@ const authController = {
 
             // Enviar el token al cliente sin incluir la contraseña
             res.json({
-                message: 'Login successful',
+                message: 'Login exitoso',
                 token,
                 user: {
                     id: user._id,

@@ -10,3 +10,5 @@ coverage
 .DS_Store
 *.iml
 eslint.config.js
+pasos_a_seguir.txt
+BD.png

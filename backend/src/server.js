@@ -5,8 +5,8 @@ import connectDB from "./config/db.js";
 import dns from "node:dns";
 import authRouter from "./routes/auth.js";
 import usersRouter from "./routes/users.js";
-import departmentsRouter from "./routes/departments.js";
-import employeeRouter from "./routes/employee.js";
+import exercisesRouter from "./routes/exercises.js";
+import workoutPlanRouter from "./routes/userWorkoutPlan.js";
 // Importaciones para acceder a las rutas del frontend - configurar el acceso al frontend.
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -29,11 +29,10 @@ const __dirname = path.dirname(__filename);
 // Routes
 app.use("/auth", authRouter);
 app.use("/users", usersRouter);
-app.use("/departments", departmentsRouter);
-app.use("/employees", employeeRouter);
-
+app.use("/exercises", exercisesRouter);
+app.use("/plans", workoutPlanRouter);
 // Cambia a true si estás trabajando en local y quieres servir el frontend desde el mismo servidor
-const proyectoLocal = false; 
+const proyectoLocal = false;
 
 // vamos a hacer la petición para que se muestre nuestro front
 // Servir archivos estáticos desde la carpeta "public"

@@ -1,0 +1,164 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h3 class="fw-bold">Planes de Entrenamiento</h3>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+
+    <!-- Toolbar -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-nuevoPlan" data-bs-toggle="modal" data-bs-target="#modalPlan">
+        <i class="bi bi-plus-lg me-1"></i> Nuevo Plan
+      </button>
+    </div>
+
+    <!-- Tabla (placeholder por ahora) -->
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Usuario</th>
+          <th>Sesión</th>
+          <th>Ejercicios</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (plans.length === 0) {
+        <tr>
+          <td colspan="4" class="text-center text-muted">
+            No hay planes cargados
+          </td>
+        </tr>
+        }
+        @for (plan of plans; track plan._id) {
+        <tr>
+          <!-- Usuario -->
+          <td class="fw-semibold">
+            {{ plan.userId?.name }}
+          </td>
+          <!-- Sesión -->
+          <td>
+            {{ plan.sessions[0]?.title }}
+          </td>
+          <!-- Ejercicios -->
+          <td>
+            {{ plan.sessions[0]?.exercises.length }} ejercicios
+          </td>
+          <!-- Acciones -->
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-primary me-1">
+              <i class="bi bi-eye"></i>
+            </button>
+
+            <button class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="modalPlan" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- HEADER -->
+      <div class="modal-header">
+        <h5 class="modal-title">Nuevo Plan</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- BODY -->
+      <div class="modal-body">
+
+        <!-- USUARIO -->
+        <div class="mb-3">
+          <label for="userSelect" class="form-label fw-bold">Usuario</label>
+
+          <select id="userSelect" class="form-select" [(ngModel)]="selectedUser" name="user">
+
+            <option value="">Seleccione un usuario</option>
+
+            @for (user of users; track user._id) {
+            <option [value]="user._id">{{ user.name }}</option>
+            }
+          </select>
+
+          @if (!selectedUser) {
+          <small class="text-danger">Debe seleccionar un usuario</small>
+          }
+        </div>
+
+        <!-- EJERCICIOS -->
+        <div class="mb-3">
+          <label for="tituloEjercicios" class="form-label fw-bold">Ejercicios</label>
+
+          <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
+
+            @for (exercise of exercises; track exercise._id) {
+
+            <div class="form-check">
+
+              <input class="form-check-input" type="checkbox" [id]="'ex-' + exercise._id"
+                (change)="toggleExercise(exercise)">
+
+              <label class="form-check-label" [for]="'ex-' + exercise._id">
+
+                {{ exercise.name }}
+              </label>
+
+            </div>
+
+            }
+
+          </div>
+
+          @if (selectedExercises.length === 0) {
+          <small class="text-danger">Seleccione al menos un ejercicio</small>
+          }
+        </div>
+
+        <!-- PARÁMETROS -->
+        <div class="row">
+
+          <div class="col">
+            <label for="sets" class="form-label">Sets</label>
+            <input id="sets" type="number" class="form-control" [(ngModel)]="sets" name="sets">
+          </div>
+
+          <div class="col">
+            <label for="reps" class="form-label">Reps</label>
+            <input id="reps" type="number" class="form-control" [(ngModel)]="reps" name="reps">
+          </div>
+
+          <div class="col">
+            <label for="rest" class="form-label">Descanso (seg)</label>
+            <input id="rest" type="number" class="form-control" [(ngModel)]="restSeconds" name="restSeconds">
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="modal-footer">
+
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+
+        <button class="btn btn-danger" (click)="createPlan()" data-bs-dismiss="modal"
+          [disabled]="!selectedUser || selectedExercises.length === 0">
+
+          Crear Plan
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>

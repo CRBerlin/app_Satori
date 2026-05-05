@@ -23,7 +23,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a routerLink="/planes" routerLinkActive="active"
+            <a [routerLink]="isAdmin() ? '/planes' : '/mi-plan'" routerLinkActive="active"
+                class="nav-link text-white d-flex align-items-center gap-2">
+
+                <i class="bi bi-card-checklist"></i>
+                {{ isAdmin() ? 'Planes de entrenamiento' : 'Mi plan' }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/suscripciones" routerLinkActive="active"
                 class="nav-link text-white d-flex align-items-center gap-2">
                 <i class="bi bi-clipboard-check-fill"></i> Suscripciones
             </a>

@@ -56,7 +56,7 @@ const workoutPlanController = {
         }
     },
 
-    // 🔥 Admin ver plan de cualquier usuario
+    // Admin ver plan de cualquier usuario
     getByUserId: async (req, res) => {
         try {
             const { id } = req.params;
@@ -125,7 +125,24 @@ const workoutPlanController = {
             console.error("Error eliminando plan:", error);
             res.status(500).json({ message: "Error del servidor" });
         }
-    }
+    },
+
+    getAll: async (req, res) => {
+        try {
+            if (req.user.role !== "admin") {
+                return res.status(403).json({ message: "No autorizado" });
+            }
+            const plans = await UserWorkoutPlan
+                .find()
+                .populate("userId", "name email")
+                .populate("sessions.exercises.exerciseId");
+
+            res.status(200).json({ data: plans });
+        } catch (error) {
+            console.error("Error obteniendo planes:", error);
+            res.status(500).json({ message: "Error del servidor" });
+        }
+    },
 
 };
 

@@ -8,6 +8,9 @@ const userWorkoutPlanRouter = Router();
 // Admin crea plan
 userWorkoutPlanRouter.post("/", authMiddleware, roleMiddleware("admin"), workoutPlanController.create);
 
+// Admin obtiene todos los planes
+userWorkoutPlanRouter.get("/", authMiddleware, roleMiddleware("admin"), workoutPlanController.getAll);
+
 // Usuario obtiene su plan
 userWorkoutPlanRouter.get("/me", authMiddleware, roleMiddleware("user"), workoutPlanController.getMyPlan);
 

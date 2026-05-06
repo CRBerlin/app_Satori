@@ -1,42 +1,58 @@
-<div class="d-flex justify-content-center align-items-center loginBody">
-    <div class="card p-4 shadow-lg loginCard">
-        <!-- Título -->
-        <h2 class="text-center fw-bold mb-1">SATORI</h2>
-        <p class="text-center text-muted mb-2">MARCA, ENTRENA, TRASCIENDE</p>
+<div class="login-container">
+    <!-- Red diagonals -->
+    <div class="red-line red-line-1"></div>
+    <div class="red-line red-line-2"></div>
+    <!-- Login card -->
+    <div class="login-card">
+        <!-- Logo -->
+        <div class="login-header">
+            <div class="logo-icon">
+                <i class="bi bi-hexagon-fill"></i>
+            </div>
+            <h1>SATORI</h1>
+            <p>MARCA, ENTRENA, TRASCIENDE</p>
+        </div>
+        <!-- Form -->
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <!-- EMAIL -->
-            <div class="mb-3">
-                <label for="email" class="form-label fw-semibold">Email</label>
-                <input type="email" class="form-control" formControlName="email" placeholder="correo@ejemplo.com"
-                    name="email">
-
+            <div class="input-group-custom">
+                <label for="email">Email</label>
+                <div class="input-wrapper">
+                    <i class="bi bi-envelope"></i>
+                    <input type="email" id="email" formControlName="email" placeholder="correo@ejemplo.com">
+                </div>
                 @if (form.get('email')?.touched && form.get('email')?.invalid) {
-                <small class="text-danger d-flex align-items-center gap-1 mt-1">
+                <small class="error-text">
                     ⚠ Email inválido
                 </small>
                 }
             </div>
             <!-- PASSWORD -->
-            <div class="mb-3">
-                <label for="password" class="form-label fw-semibold">Password</label>
-                <input type="password" class="form-control" formControlName="password" placeholder="••••••"
-                    name="password">
-
+            <div class="input-group-custom">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="bi bi-lock"></i>
+                    <input type="password" id="password" formControlName="password" placeholder="••••••••">
+                    <i class="bi bi-eye-slash password-icon"></i>
+                </div>
                 @if (form.get('password')?.touched && form.get('password')?.invalid) {
-                <small class="text-danger d-flex align-items-center gap-1 mt-1">
+                <small class="error-text">
                     ⚠ Mínimo 4 caracteres
                 </small>
                 }
             </div>
-            <!-- ERROR BACK -->
+            <!-- ERROR -->
             @if (error) {
-            <div class="alert alert-danger d-flex align-items-center gap-2 py-2">
+            <div class="backend-error">
                 ⚠ {{ error }}
             </div>
             }
-            <!-- BOTÓN -->
-            <button type="submit" class="btn w-100 d-flex justify-content-center align-items-center gap-2"
-                [disabled]="loading">
+            <!-- FORGOT -->
+            <div class="forgot-password" data-bs-toggle="modal" data-bs-target="#comingSoonModal">
+                ¿Olvidaste tu contraseña?
+            </div>
+            <!-- BUTTON -->
+            <button type="submit" class="login-button" [disabled]="loading">
                 @if (loading) {
                 <span class="spinner-border spinner-border-sm"></span>
                 Cargando...
@@ -45,15 +61,36 @@
                 }
             </button>
         </form>
-        <div class="text-center mt-3">
-            <small class="text-muted">
-                ¿No tienes cuenta?
-                <!-- Se deja comentario para cuando se cree la funcionalidad de registro, ya que no se ha implementado en el backend. -->
-                <!-- <a class="ms-1 text-primary fw-semibold" style="cursor: pointer;" (click)="goToRegister()"> -->
-                <a class="ms-1 text-primary fw-semibold" style="cursor: pointer;">
-                    Regístrate
-                </a>
-            </small>
+        <!-- REGISTER -->
+        <div class="register-text">
+            ¿No tienes cuenta?
+            <span data-bs-toggle="modal" data-bs-target="#comingSoonModal">
+                Regístrate
+            </span>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="comingSoonModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">
+                        🚧 Función en construcción
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Esta funcionalidad estará disponible próximamente en SATORI.
+                    <br><br>
+                    Estamos trabajando para brindarte una mejor experiencia.
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        Entendido
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

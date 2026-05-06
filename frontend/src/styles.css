@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* COLORS */
+  --primary-blue: #003366;
+  --primary-blue-dark: #001f3f;
+  --primary-red: #dc3545;
+  --primary-red-light: #ff4d5f;
+  --background-main: #f4f6f9;
+  --text-light: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+
+  /* GLASS */
+  --glass-bg: rgba(0, 25, 55, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* SHADOWS */
+  --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --shadow-red: 0 10px 25px rgba(220, 53, 69, 0.25);
+
+  /* RADIUS */
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* TRANSITIONS */
+  --transition-main: 0.3s ease;
+}

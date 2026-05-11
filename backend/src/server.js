@@ -40,13 +40,16 @@ if (proyectoLocal) {
   app.get("/", (req, res) => {
     res.status(200).send("API is running");
   });
-} else {
-  app.use(express.static(path.join(__dirname, "public")));
 
+  } else {
+
+  app.use(express.static(path.join(__dirname, "public")));
   // Ruta principal para servir index.html
-  app.get("/*", (req, res) => {
+
+  app.use((req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
   });
+
 }
 
 // Connect to the database and start the server

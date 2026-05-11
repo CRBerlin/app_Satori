@@ -15,6 +15,16 @@ import { PageNotFound } from './components/pages/page-not-found/page-not-found';
 
 export const routes: Routes = [
   // =========================
+  // DEFAULT
+  // =========================
+
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+
+  // =========================
   // AUTH LAYOUT
   // =========================
 
@@ -42,12 +52,6 @@ export const routes: Routes = [
     canActivate: [authGuard],
 
     children: [
-      {
-        path: '',
-        redirectTo: 'inicio',
-        pathMatch: 'full',
-      },
-
       {
         path: 'inicio',
         component: Home,

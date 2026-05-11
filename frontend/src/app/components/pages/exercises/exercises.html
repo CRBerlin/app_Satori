@@ -41,10 +41,12 @@
           </td>
 
           <td class="text-center">
-            <button class="btn btn-sm btn-outline-warning me-1">
+            <button class="btn btn-sm btn-outline-warning me-1" data-bs-toggle="modal"
+              data-bs-target="#modalEditarEjercicio" (click)="editExercise(exercise)">
               <i class="bi bi-pencil"></i>
             </button>
-            <button class="btn btn-sm btn-outline-danger">
+            <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+              data-bs-target="#modalEliminarEjercicio" (click)="deleteExercise(exercise._id)">
               <i class="bi bi-trash"></i>
             </button>
           </td>
@@ -121,4 +123,117 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- MODAL EDITAR -->
+<div class="modal fade" id="modalEditarEjercicio" tabindex="-1">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <!-- HEADER -->
+      <div class="modal-header">
+
+        <h5 class="modal-title">
+          Editar Ejercicio
+        </h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal">
+        </button>
+
+      </div>
+
+      <!-- BODY -->
+      <div class="modal-body">
+
+        <form>
+
+          <!-- Nombre -->
+          <div class="mb-3">
+
+            <label for="editName" class="form-label">
+              Nombre
+            </label>
+
+            <input type="text" class="form-control" [(ngModel)]="exercise.name" name="editName">
+
+          </div>
+
+          <!-- Descripción -->
+          <div class="mb-3">
+
+            <label for="editDescription" class="form-label">
+              Descripción
+            </label>
+
+            <textarea class="form-control" [(ngModel)]="exercise.description" name="editDescription">
+            </textarea>
+
+          </div>
+
+          <!-- Video -->
+          <div class="mb-3">
+
+            <label for="editVideo" class="form-label">
+              Video URL
+            </label>
+
+            <input type="text" class="form-control" [(ngModel)]="exercise.videoUrl" name="editVideo">
+
+          </div>
+
+          <!-- Grupo -->
+          <div class="mb-3">
+
+            <label for="editGroup" class="form-label">
+              Grupo muscular
+            </label>
+
+            <input type="text" class="form-control" [(ngModel)]="exercise.muscleGroup" name="editGroup">
+
+          </div>
+
+          <!-- Dificultad -->
+          <div class="mb-3">
+
+            <label for="editDifficulty" class="form-label">
+              Dificultad
+            </label>
+
+            <select class="form-select" [(ngModel)]="exercise.difficulty" name="editDifficulty">
+
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+
+            </select>
+
+          </div>
+
+        </form>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="modal-footer">
+
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+
+          Cancelar
+
+        </button>
+
+        <button class="btn btn-danger" data-bs-dismiss="modal" (click)="updateExercise()">
+
+          Guardar Cambios
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

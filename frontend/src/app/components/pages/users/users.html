@@ -40,10 +40,12 @@
           <td>{{ user.planStatus }}</td>
 
           <td class="text-center">
-            <button class="btn btn-sm btn-outline-warning me-1">
+            <button class="btn btn-sm btn-outline-warning me-1" data-bs-toggle="modal"
+              data-bs-target="#modalEditarUsuario" (click)="editUser(user)">
               <i class="bi bi-pencil"></i>
             </button>
-            <button class="btn btn-sm btn-outline-danger">
+            <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario"
+              (click)="deleteUser(user._id)">
               <i class="bi bi-trash"></i>
             </button>
           </td>
@@ -127,4 +129,106 @@
 
     </div>
   </div>
+</div>
+
+<!-- Modal Editar Usuario -->
+<div class="modal fade" id="modalEditarUsuario" tabindex="-1">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <!-- HEADER -->
+      <div class="modal-header">
+
+        <h5 class="modal-title">
+          Editar Usuario
+        </h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal">
+        </button>
+
+      </div>
+
+      <!-- BODY -->
+      <div class="modal-body">
+
+        <form [formGroup]="form">
+
+          <!-- Nombre -->
+          <div class="mb-3">
+
+            <label for="name" class="form-label">
+              Nombre
+            </label>
+
+            <input type="text" class="form-control" formControlName="name" id="name">
+
+
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+
+            <label for="email" class="form-label">
+              Email
+            </label>
+
+            <input type="email" class="form-control" formControlName="email">
+
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+
+            <label for="password" class="form-label">
+              Nueva Contraseña
+            </label>
+
+            <input type="password" id="password" class="form-control" formControlName="password" placeholder="Opcional">
+
+          </div>
+
+          <!-- Rol -->
+          <div class="mb-3">
+
+            <label for="role" class="form-label">
+              Rol
+            </label>
+
+            <select class="form-select" id="role" formControlName="role">
+
+              <option value="user">User</option>
+              <option value="trainer">Trainer</option>
+              <option value="admin">Admin</option>
+
+            </select>
+
+          </div>
+
+        </form>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+
+          Cancelar
+
+        </button>
+
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="updateUser()">
+
+          Guardar Cambios
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

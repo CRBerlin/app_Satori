@@ -9,7 +9,7 @@ const usersRouter = Router();
 usersRouter.post("/", userController.create);
 
 // Protegidas
-usersRouter.get("/", authMiddleware, roleMiddleware("admin"), userController.readAll);
+usersRouter.get("/", authMiddleware, userController.readAll);
 usersRouter.get("/:id", authMiddleware, roleMiddleware("admin", "user"), userController.read);
 usersRouter.put("/:id", authMiddleware, roleMiddleware("admin", "user"), userController.update);
 usersRouter.delete("/:id", authMiddleware, roleMiddleware("admin"), userController.delete);

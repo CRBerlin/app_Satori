@@ -16,6 +16,7 @@ export class Exercises implements OnInit {
   private readonly cdr = inject(ChangeDetectorRef);
 
   exercises: any[] = [];
+  selectedExerciseId = '';
 
   exercise = {
     name: '',
@@ -43,6 +44,45 @@ export class Exercises implements OnInit {
     this.exercisesService.getAllExercises().subscribe((res: any) => {
       this.exercises = res.data;
       this.cdr.detectChanges();
+    });
+  }
+
+  editExercise(exercise: any) {
+    this.selectedExerciseId = exercise._id;
+
+    this.exercise = {
+      name: exercise.name,
+      description: exercise.description,
+      videoUrl: exercise.videoUrl,
+      muscleGroup: exercise.muscleGroup,
+      difficulty: exercise.difficulty,
+    };
+  }
+
+  updateExercise() {
+    this.exercisesService.updateExercise(this.selectedExerciseId, this.exercise).subscribe({
+      next: () => {
+        this.loadExercises();
+
+        this.resetForm();
+      },
+
+      error: (err) => console.error(err),
+    });
+  }
+
+  deleteExercise(id: string) {
+    const confirmDelete = confirm('¿Seguro que deseas eliminar este ejercicio?');
+
+    if (!confirmDelete) return;
+
+    this.exercisesService.deleteExercise(id).subscribe({
+      next: () => {
+        // Eliminar localmente SIN rerender completo
+        this.exercises = this.exercises.filter((exercise) => exercise._id !== id);
+      },
+
+      error: (err) => console.error(err),
     });
   }
 

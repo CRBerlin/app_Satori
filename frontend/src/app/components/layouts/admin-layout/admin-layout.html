@@ -1,23 +1,46 @@
 <div class="layout">
 
-  <!-- Sidebar -->
-  <div class="sidebar bg-dark text-white">
+  <!-- MOBILE OVERLAY -->
+  @if (mobileMenuOpen) {
+
+  <div class="mobile-overlay" (click)="closeMobileMenu()" (keydown.enter)="closeMobileMenu()">
+  </div>
+
+  }
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" [class.mobile-open]="mobileMenuOpen">
+
     <app-aside></app-aside>
+
   </div>
 
-  <!-- Header -->
-  <div class="header text-white">
+  <!-- HEADER -->
+  <div class="header">
+
+    <!-- MOBILE BUTTON -->
+    <button class="mobile-menu-button" (click)="toggleMobileMenu()">
+
+      <i class="bi bi-list"></i>
+
+    </button>
+
     <app-header></app-header>
+
   </div>
 
-  <!-- Content -->
+  <!-- CONTENT -->
   <div class="content p-3">
+
     <router-outlet></router-outlet>
+
   </div>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <div class="footer text-white text-center">
+
     <app-footer></app-footer>
+
   </div>
 
 </div>

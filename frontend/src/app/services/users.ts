@@ -9,11 +9,21 @@ export class UsersService {
   private readonly apiUrl = 'http://localhost:3000/users';
   // private readonly apiUrl = 'http://18.219.13.137:3000/users';
 
+  
+
   createUser(user: any) {
     return this.httpClient.post(this.apiUrl, user);
   }
 
   getAllUsers() {
     return this.httpClient.get(this.apiUrl);
+  }
+
+  updateUser(id: string, user: any) {
+    return this.httpClient.put(`${this.apiUrl}/${id}`, user);
+  }
+
+  deleteUser(id: string) {
+    return this.httpClient.delete(`${this.apiUrl}/${id}`);
   }
 }

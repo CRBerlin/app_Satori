@@ -1,48 +1,125 @@
-<div class="d-flex flex-column h-100 py-3">
+<div class="sidebar-container d-flex flex-column h-100">
 
-    <!-- Logo + perfil -->
-    <div class="text-center mb-4">
-        <img src="assets/Logo_SATORI.png" alt="Satori" class="mb-2" style="width: 100%;">
-        <img src="assets/Avatar.png" alt="Admin" class="rounded-circle my-2"
-            style="width: 200px; height: 200px; object-fit: cover;">
+    <!-- TOP -->
+    <div>
+
+        <!-- Logo -->
+        <div class="logo-section">
+
+            <img src="assets/Logo_SATORI.png" alt="Satori" class="logo-image">
+
+        </div>
+
+        <!-- Avatar -->
+        <div class="profile-section">
+
+            <div class="avatar-wrapper">
+
+                <img src="assets/Avatar.png" alt="Admin" class="profile-avatar">
+
+            </div>
+
+            <h5 class="profile-name">
+                Panel Administrativo
+            </h5>
+
+            <p class="profile-role">
+                Gestión SATORI
+            </p>
+
+        </div>
+
+        <!-- NAV -->
+        <ul class="nav flex-column sidebar-nav">
+
+            <!-- Inicio -->
+
+            <li class="nav-item">
+
+                <a routerLink="/inicio" routerLinkActive="active"
+                    class="nav-link text-white d-flex align-items-center gap-2">
+
+                    <i class="bi bi-house-door-fill"></i>
+
+                    <span>Inicio</span>
+
+                </a>
+
+            </li>
+
+            <!-- Usuarios -->
+            <li class="nav-item">
+
+                <a routerLink="/usuarios" routerLinkActive="active" class="nav-link">
+
+                    <i class="bi bi-people-fill"></i>
+
+                    <span>Usuarios</span>
+
+                </a>
+
+            </li>
+
+            <!-- Ejercicios -->
+            @if (isAdmin()) {
+
+            <li class="nav-item">
+
+                <a routerLink="/ejercicios" routerLinkActive="active" class="nav-link">
+
+                    <i class="bi bi-person-arms-up"></i>
+
+                    <span>Ejercicios</span>
+
+                </a>
+
+            </li>
+
+            }
+
+            <!-- Plan -->
+            <li class="nav-item">
+
+                <a [routerLink]="isAdmin() ? '/planes' : '/mi-plan'" routerLinkActive="active" class="nav-link">
+
+                    <i class="bi bi-card-checklist"></i>
+
+                    <span>
+                        {{ isAdmin() ? 'Planes' : 'Mi Plan' }}
+                    </span>
+
+                </a>
+
+            </li>
+
+            <!-- Suscripciones -->
+            <li class="nav-item">
+
+                <a routerLink="/suscripciones" routerLinkActive="active" class="nav-link">
+
+                    <i class="bi bi-clipboard-check-fill"></i>
+
+                    <span>Suscripciones</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
     </div>
 
-    <!-- Nav links -->
-    <ul class="nav nav-pills flex-column px-2 flex-grow-1">
-        <li class="nav-item">
-            <a routerLink="/usuarios" routerLinkActive="active"
-                class="nav-link text-white d-flex align-items-center gap-2">
-                <i class="bi bi-people-fill"></i> Usuarios
-            </a>
-        </li>
+    <!-- BOTTOM -->
+    <div class="logout-section">
 
-        <li class="nav-item">
-            <a routerLink="/ejercicios" routerLinkActive="active"
-                class="nav-link text-white d-flex align-items-center gap-2">
-                <i class="bi bi-person-arms-up"></i> Ejercicios
-            </a>
-        </li>
-        <li class="nav-item">
-            <a [routerLink]="isAdmin() ? '/planes' : '/mi-plan'" routerLinkActive="active"
-                class="nav-link text-white d-flex align-items-center gap-2">
+        <button class="logout-button" (click)="logout()">
 
-                <i class="bi bi-card-checklist"></i>
-                {{ isAdmin() ? 'Planes de entrenamiento' : 'Mi plan' }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a routerLink="/suscripciones" routerLinkActive="active"
-                class="nav-link text-white d-flex align-items-center gap-2">
-                <i class="bi bi-clipboard-check-fill"></i> Suscripciones
-            </a>
-        </li>
-    </ul>
+            <i class="bi bi-power"></i>
 
-    <!-- Salir -->
-    <div class="px-2 mt-3">
-        <button class="nav-link text-white d-flex align-items-center gap-2 w-100" (click)="logout()">
-            <i class="bi bi-power"></i> Salir
+            <span>Salir</span>
+
         </button>
+
     </div>
 
 </div>

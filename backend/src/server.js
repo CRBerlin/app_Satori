@@ -44,7 +44,7 @@ if (proyectoLocal) {
   app.use(express.static(path.join(__dirname, "public")));
 
   // Ruta principal para servir index.html
-  app.get("*", (req, res) => {
+  app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
   });
 }

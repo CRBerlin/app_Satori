@@ -11,7 +11,6 @@ import workoutPlanRouter from "./routes/userWorkoutPlan.js";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
-
 //Se fuerza DNS de google para evitar error ECONNREFUSED en localhost. Se usa solo para localhost, en producción no es necesario.
 if (process.env.NODE_ENV !== "production") {
   dns.setServers(["8.8.8.8", "8.8.4.4"]);
@@ -32,24 +31,23 @@ app.use("/users", usersRouter);
 app.use("/exercises", exercisesRouter);
 app.use("/plans", workoutPlanRouter);
 // Cambia a true si estás trabajando en local y quieres servir el frontend desde el mismo servidor
-const proyectoLocal = false;
+const proyectoLocal = true;
 
 // vamos a hacer la petición para que se muestre nuestro front
 // Servir archivos estáticos desde la carpeta "public"
 if (proyectoLocal) {
+  //test route
+  app.get("/", (req, res) => {
+    res.status(200).send("API is running");
+  });
+} else {
   app.use(express.static(path.join(__dirname, "public")));
 
   // Ruta principal para servir index.html
   app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
   });
-} else {
-  //test route
-  app.get("/", (req, res) => {
-    res.status(200).send("API is running");
-  });
-};
-
+}
 
 // Connect to the database and start the server
 const PORT = process.env.PORT || 3000;

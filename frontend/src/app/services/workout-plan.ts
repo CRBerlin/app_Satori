@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WorkoutPlanService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:3000/plans';
+  // private readonly apiUrl = 'http://localhost:3000/plans';
+  private readonly apiUrl = 'http://18.219.13.137:3000/plans';
 
   // Crear plan (admin)
   createPlan(data: any) {

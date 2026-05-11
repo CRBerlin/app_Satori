@@ -31,7 +31,7 @@ app.use("/users", usersRouter);
 app.use("/exercises", exercisesRouter);
 app.use("/plans", workoutPlanRouter);
 // Cambia a true si estás trabajando en local y quieres servir el frontend desde el mismo servidor
-const proyectoLocal = true;
+const proyectoLocal = false;
 
 // vamos a hacer la petición para que se muestre nuestro front
 // Servir archivos estáticos desde la carpeta "public"

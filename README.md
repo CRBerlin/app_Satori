@@ -1,32 +1,79 @@
-# Satori App 💪🧠
+# 🧘 APP SATORI
 
-Satori es una aplicación de entrenamiento personalizado que permite a los usuarios acceder a rutinas diseñadas específicamente para ellos, realizar seguimiento de su progreso y mejorar su rendimiento físico.
+SATORI es una aplicación web orientada al entrenamiento físico personalizado. La plataforma cuenta con autenticación por roles, permitiendo que los administradores gestionen usuarios, creen ejercicios y asignen planes de entrenamiento personalizados. Por otro lado, los usuarios pueden iniciar sesión y visualizar sus rutinas con información detallada, incluyendo series, repeticiones, tiempos de descanso y videos explicativos integrados desde YouTube.
 
-## 🚀 Tecnologías
+El proyecto busca ofrecer una experiencia moderna, responsive y fácil de usar, aplicando tecnologías actuales de desarrollo web full stack.
 
-- Frontend: Angular (demo) / Flutter (en desarrollo)
-- Backend: Node.js + Express
-- Base de datos: MongoDB (Mongoose)
+---
 
-## ⚙️ Funcionalidades MVP
+# 🚀 Demo en Producción
 
-- Registro e inicio de sesión de usuarios
-- Asignación de planes de entrenamiento
-- Visualización de rutinas personalizadas
-- Seguimiento del progreso por sesión
+🌐 Producción AWS EC2  
 
-## 🏗️ Arquitectura
+http://18.219.13.137:3000
 
-- User → Información del usuario, rol y estado del plan
-- Exercise → Catálogo global de ejercicios
-- UserWorkoutPlan → Rutina personalizada por usuario
-- Progress → Seguimiento del entrenamiento actual
+## 🔑 Credenciales de prueba
 
-## 📌 Estado del proyecto
+### 👨‍💼 Administrador
 
-En desarrollo (MVP en construcción)
+```bash
+Email: admin@test.com
+Password: 123456
 
-## 👨‍💻 Autor
+Email: usuario@test.com
+Password: 123456
 
-Carlos Roberto  
-CRSoftware Studio
+# ✨ Funcionalidades
+
+## 🔐 Autenticación y Seguridad
+
+- Login con JWT
+- Protección de rutas
+- Middleware de autenticación
+- Interceptor JWT en Angular
+- Gestión de sesiones
+- Roles de usuario y administrador
+
+## 👨‍💼 Administrador
+
+- CRUD de usuarios
+- CRUD de ejercicios
+- Gestión de planes de entrenamiento
+- Dashboard administrativo
+- Gestión de suscripciones
+- Asignación de rutinas
+
+## 👤 Usuario
+
+- Inicio de sesión personalizado
+- Visualización de rutinas
+- Consulta de ejercicios
+- Videos integrados desde YouTube
+- Visualización de series y descansos
+
+---
+
+# 🛠️ Tecnologías Utilizadas
+
+## 🎨 Frontend
+
+- Angular
+- TypeScript
+- Bootstrap 5
+- HTML5
+- CSS3
+
+## ⚙️ Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- bcryptjs
+
+## ☁️ Deploy y Producción
+
+- AWS EC2
+- PM2
+- GitHub
